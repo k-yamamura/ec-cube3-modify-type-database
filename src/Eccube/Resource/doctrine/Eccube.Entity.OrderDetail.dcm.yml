@@ -1,0 +1,90 @@
+Eccube\Entity\OrderDetail:
+    type: entity
+    table: dtb_order_detail
+    repositoryClass: Eccube\Repository\OrderDetailRepository
+    indexes:
+        dtb_order_detail_product_id_key:
+            columns:
+                - product_id
+    id:
+        id:
+            type: integer
+            column: order_detail_id
+            generator:
+                strategy: AUTO
+            options:
+                unsigned: true
+    fields:
+        product_name:
+            type: string
+            length: 100
+        product_code:
+            type: string
+            length: 100
+            nullable: true
+        class_name1:
+            type: string
+            length: 100
+            nullable: true
+        class_name2:
+            type: string
+            length: 100
+            nullable: true
+        class_category_name1:
+            type: string
+            length: 100
+            nullable: true
+        class_category_name2:
+            type: string
+            length: 100
+            nullable: true
+        price:
+            type: decimal
+            precision: 10
+            scale: 0
+            options:
+                unsigned: true
+                default: 0
+        quantity:
+            type: decimal
+            precision: 10
+            scale: 0
+            options:
+                unsigned: true
+                default: 0
+        tax_rate:
+            type: decimal
+            precision: 10
+            scale: 0
+            options:
+                unsigned: true
+                default: 0
+        tax_rule:
+            type: smallint
+            nullable: true
+            options:
+                unsigned: true
+    manyToOne:
+        Order:
+            targetEntity: Eccube\Entity\Order
+            inversedBy: OrderDetails
+            joinColumn:
+                name: order_id
+                referencedColumnName: order_id
+                options:
+                    unsigned: true
+        Product:
+            targetEntity: Eccube\Entity\Product
+            joinColumn:
+                name: product_id
+                referencedColumnName: product_id
+                options:
+                    unsigned: true
+        ProductClass:
+            targetEntity: Eccube\Entity\ProductClass
+            joinColumn:
+                name: product_class_id
+                referencedColumnName: product_class_id
+                options:
+                    unsigned: true
+    lifecycleCallbacks: {  }

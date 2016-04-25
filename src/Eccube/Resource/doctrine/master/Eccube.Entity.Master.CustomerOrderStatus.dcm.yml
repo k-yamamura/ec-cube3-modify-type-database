@@ -1,0 +1,18 @@
+Eccube\Entity\Master\CustomerOrderStatus:
+    type: entity
+    table: mtb_customer_order_status
+    repositoryClass: Eccube\Repository\Master\CustomerOrderStatusRepository
+    id:
+        id:
+            type: smallint
+            options:
+                unsigned: true
+    fields:
+        name:
+            type: string
+            length: 100
+        rank:
+            type: smallint
+            options:
+                unsigned: true
+    lifecycleCallbacks: {  }

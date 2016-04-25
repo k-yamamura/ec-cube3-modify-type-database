@@ -1,0 +1,69 @@
+Eccube\Entity\Member:
+    type: entity
+    table: dtb_member
+    repositoryClass: Eccube\Repository\MemberRepository
+    id:
+        id:
+            type: integer
+            column: member_id
+            generator:
+                strategy: AUTO
+            options:
+                unsigned: true
+    fields:
+        name:
+            type: string
+            length: 100
+            nullable: true
+        department:
+            type: string
+            length: 100
+            nullable: true
+        login_id:
+            type: string
+            length: 100
+        password:
+            type: string
+            length: 200
+        salt:
+            type: string
+            length: 200
+        rank:
+            type: smallint
+            options:
+                unsigned: true
+        del_flg:
+            type: smallint
+            options:
+                unsigned: true
+                default: 0
+        create_date:
+            type: datetime
+        update_date:
+            type: datetime
+        login_date:
+            type: datetime
+            nullable: true
+    manyToOne:
+        Work:
+            targetEntity: Eccube\Entity\Master\Work
+            joinColumn:
+                name: work
+                referencedColumnName: id
+                options:
+                    unsigned: true
+        Authority:
+            targetEntity: Eccube\Entity\Master\Authority
+            joinColumn:
+                name: authority
+                referencedColumnName: id
+                options:
+                    unsigned: true
+        Creator:
+            targetEntity: Eccube\Entity\Member
+            joinColumn:
+                name: creator_id
+                referencedColumnName: member_id
+                options:
+                    unsigned: true
+    lifecycleCallbacks: {  }

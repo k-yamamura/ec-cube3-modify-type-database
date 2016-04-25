@@ -1,0 +1,24 @@
+Eccube\Entity\Master\Zip:
+    type: entity
+    table: mtb_zip
+    repositoryClass: Eccube\Repository\Master\ZipRepository
+    id:
+        id:
+            type: smallint
+            column: zip_id
+            options:
+                unsigned: true
+    fields:
+        zipcode:
+            type: string
+            length: 7
+        state:
+            type: string
+            length: 100
+        city:
+            type: string
+            length: 100
+        town:
+            type: string
+            length: 100
+    lifecycleCallbacks: {  }

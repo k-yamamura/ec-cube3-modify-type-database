@@ -1,0 +1,68 @@
+Eccube\Entity\PageLayout:
+    type: entity
+    table: dtb_page_layout
+    repositoryClass: Eccube\Repository\PageLayoutRepository
+    id:
+        id:
+            type: integer
+            column: page_id
+            generator:
+                strategy: AUTO
+            options:
+                unsigned: true
+    fields:
+        name:
+            type: string
+            length: 100
+            column: page_name
+        url:
+            type: string
+            length: 200
+        file_name:
+            type: string
+            length: 100
+            nullable: true
+        edit_flg:
+            type: smallint
+            options:
+                unsigned: true
+                default: 1
+        author:
+            type: string
+            length: 400
+            nullable: true
+        description:
+            type: string
+            length: 400
+            nullable: true
+        keyword:
+            type: string
+            length: 400
+            nullable: true
+        update_url:
+            type: string
+            length: 400
+            nullable: true
+        create_date:
+            type: datetime
+        update_date:
+            type: datetime
+        meta_robots:
+            type: string
+            length: 400
+            nullable: true
+    oneToMany:
+        BlockPositions:
+            targetEntity: Eccube\Entity\BlockPosition
+            cascade: ["persist", "remove"]
+            mappedBy: PageLayout
+            indexBy: block_id
+    manyToOne:
+        DeviceType:
+            targetEntity: Eccube\Entity\Master\DeviceType
+            joinColumn:
+                name: device_type_id
+                referencedColumnName: id
+                options:
+                    unsigned: true
+    lifecycleCallbacks: {  }

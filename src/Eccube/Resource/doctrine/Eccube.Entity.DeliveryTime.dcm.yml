@@ -1,0 +1,26 @@
+Eccube\Entity\DeliveryTime:
+    type: entity
+    table: dtb_delivery_time
+    repositoryClass: Eccube\Repository\DeliveryTimeRepository
+    id:
+        id:
+            type: integer
+            column: time_id
+            generator:
+                strategy: AUTO
+            options:
+                unsigned: true
+    fields:
+        delivery_time:
+            type: string
+            length: 100
+    manyToOne:
+        Delivery:
+            targetEntity: Eccube\Entity\Delivery
+            inversedBy: DeliveryTimes
+            joinColumn:
+                name: delivery_id
+                referencedColumnName: delivery_id
+                options:
+                    unsigned: true
+    lifecycleCallbacks: {  }

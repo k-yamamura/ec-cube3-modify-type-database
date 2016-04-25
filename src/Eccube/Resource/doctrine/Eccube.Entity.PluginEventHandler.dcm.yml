@@ -1,0 +1,48 @@
+Eccube\Entity\PluginEventHandler:
+    type: entity
+    table: dtb_plugin_event_handler
+    repositoryClass: Eccube\Repository\PluginEventHandlerRepository
+
+    id:
+        id:
+            type: integer
+            column: id
+            generator:
+                strategy: AUTO
+            options:
+                unsigned: true
+    fields:
+        event:
+            type: string
+            length: 100
+        priority:
+            type: smallint
+            options:
+                unsigned: true
+                default: 0
+        handler:
+            type: string
+            length: 100
+        handler_type:
+            type: string
+            length: 10
+            nullable: false
+        del_flg:
+            type: smallint
+            options:
+                unsigned: true
+                default: 0
+        create_date:
+            type: datetime
+        update_date:
+            type: datetime
+    manyToOne:
+        Plugin:
+            targetEntity: Eccube\Entity\Plugin
+            inversedBy: PluginEventHandlers
+            joinColumn:
+                name: plugin_id
+                referencedColumnName: plugin_id
+                options:
+                    unsigned: true
+    lifecycleCallbacks: {  }

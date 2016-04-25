@@ -1,0 +1,27 @@
+Eccube\Entity\DeliveryDate:
+    type: entity
+    table: dtb_delivery_date
+    repositoryClass: Eccube\Repository\DeliveryDateRepository
+    id:
+        id:
+            type: integer
+            column: date_id
+            generator:
+                strategy: AUTO
+            options:
+                unsigned: true
+    fields:
+        name:
+            type: string
+            length: 100
+            nullable: true
+        value:
+            type: smallint
+            options:
+                unsigned: true
+                default: 0
+        rank:
+            type: integer
+            options:
+                unsigned: true
+    lifecycleCallbacks: {  }
